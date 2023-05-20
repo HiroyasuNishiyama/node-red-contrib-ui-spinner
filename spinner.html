@@ -1,0 +1,147 @@
+<!--
+  Copyright 2023, HiroyasuNishiyama
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/html" data-template-name="ui_spinner">
+
+    <div class="form-row" id="template-row-group">
+        <label for="node-input-group"><i class="fa fa-table"></i> <span data-i18n="ui_spinner.label.group"></span></label>
+        <input type="text" id="node-input-group">
+    </div>
+
+    <div class="form-row" id="template-row-size">
+        <label><i class="fa fa-object-group"></i> <span data-i18n="ui_spinner.label.size"></span></label>
+        <input type="hidden" id="node-input-width">
+        <input type="hidden" id="node-input-height">
+        <button class="editor-button" id="node-input-size"></button>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> <span data-i18n="ui_spinner.label.name"></span></label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <br/>
+    <div class="form-row">
+        <label for="type-select"><i class="fa fa-spinner"></i> <span data-i18n="ui_spinner.label.type"></span></label>
+        <select id="type-select">
+            <option value="plane" data-i18n="ui_spinner.type.plane"></option>
+            <option value="chase" data-i18n="ui_spinner.type.chase"></option>
+            <option value="bounce" data-i18n="ui_spinner.type.bounce"></option>
+            <option value="wave" data-i18n="ui_spinner.type.wave"></option>
+            <option value="pulse" data-i18n="ui_spinner.type.pulse"></option>
+            <option value="flow" data-i18n="ui_spinner.type.flow"></option>
+            <option value="swing" data-i18n="ui_spinner.type.swing"></option>
+            <option value="circle" data-i18n="ui_spinner.type.circle"></option>
+            <option value="circle-fade" data-i18n="ui_spinner.type.circle-fade"></option>
+            <option value="grid" data-i18n="ui_spinner.type.grid"></option>
+            <option value="fold" data-i18n="ui_spinner.type.fold"></option>
+            <option value="wander" data-i18n="ui_spinner.type.wander"></option>
+        </select>
+        <input type="hidden" id="node-input-kind"/>
+    </div>
+
+    <div class="form-row">
+        <label>&nbsp;</label>
+        <input type="checkbox" id="node-input-overlay" style="display: inline-block; width: auto; vertical-align: top;"/>
+        <label for="node-input-overlay" style="width: 70%;"><span data-i18n="ui_spinner.label.overlay"></span></label>
+    </div>
+
+    <div class="form-row">
+        <label><i class="fa fa-magic"></i> <span data-i18n="ui_spinner.label.color"></span></label>
+        <input id="node-input-color" type="color"></input>
+    </div>
+    <div class="form-row">
+        <label><i class="fa fa-arrows-v"></i> <span data-i18n="ui_spinner.label.size"></span></label>
+        <input id="node-input-spinSize" value="20" style="width: 50px;"></input>
+    </div>
+
+</script>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('ui_spinner',{
+        category: 'dashboard',
+        color: 'rgb( 63, 173, 181)',
+        defaults: {
+            group: {type: 'ui_group', required:true},
+            order: {value: 0},
+            width: {
+                value: -1,
+                validate: (v) => {
+                    var valid = true
+                    var width = v||0;
+                    var currentGroup = $('#node-input-group').val()|| this.group;
+                    var groupNode = RED.nodes.node(currentGroup);
+                    valid = !groupNode || +width <= +groupNode.width;
+                    $("#node-input-size").toggleClass("input-error",!valid);
+                    return valid;
+                }},
+            height: {value: 0},
+            name: {value: ''},
+
+            kind: {value: "plane"},
+            overlay: {value: true},
+
+            color: {value: "#3fadb5"},
+            spinSize: {value: 50},
+        },
+        inputs: 1,
+        outputs: 0,
+        align: "right",
+        icon: "font-awesome/fa-spinner",
+        paletteLabel: "spinner",
+        label: () => {
+            return this.name || "spinner";
+        },
+        labelStyle: () => {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: () => {
+            const node = this;
+            $("#node-input-size").elementSizer({
+                width: "#node-input-width",
+                height: "#node-input-height",
+                group: "#node-input-group"
+            });
+            $("#node-input-spinSize").spinner({
+                min: 10,
+                max: 100
+            });
+
+            $("#type-select").change((ev) => {
+                const val = $("#type-select").val();
+                $("#node-input-kind").val(val);
+            });
+            const kind = $("#node-input-kind").val();
+            $("#type-select").val(kind);
+            $("#type-select").change();
+            
+
+            $("#node-input-overlay").change((ev) => {
+                if ($("#node-input-overlay").prop("checked")) {
+                    $("#template-row-size").hide();
+                }
+                else {
+                    $("#template-row-size").show();
+                }
+            });
+            $("#node-input-overlay").change();
+        },
+        oneditsave: () => {
+            if ($("#node-input-overlay").prop("checked")) {
+                $("#node-input-width").val(-1);
+                $("#node-input-height").val(-1);
+            }
+        },
+    });
+</script>

@@ -1,0 +1,26 @@
+{
+    "ui_spinner": {
+        "label": {
+            "group": "Group",
+            "size": "Size",
+            "name": "Name",
+            "type": "Type",
+            "overlay": "Overlay Whole Screen",
+            "color": "Color"
+        },
+        "type": {
+            "plane": "Plane",
+            "chase": "Chase",
+            "bounce": "Bounce",
+            "wave": "Wave",
+            "pulse": "Pulse",
+            "flow": "Flow",
+            "swing": "Swing",
+            "circle": "Circle",
+            "circle-fade": "Circle Fade",
+            "grid": "Grid",
+            "fold": "Fold",
+            "wander": "Wander"
+        }
+    }
+}
