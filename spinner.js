@@ -23,7 +23,7 @@ module.exports = (RED) => {
     function snippetFor(kind, size) {
         const style = ""; 
         switch (kind) {
-        case "plain":
+        case "plane":
             return String.raw`
 <div class='sk-plane sk-center' ${style}></div>
 `;
@@ -140,8 +140,10 @@ module.exports = (RED) => {
 </div>
 `;
         }
-        console.log("spinner kind not specified");
-        return "";
+        console.log("unknown spinner kind: ", kind);
+        return String.raw`
+<div class='sk-plane sk-center' ${style}></div>
+`;
     }
 
     function HTML(config) {
@@ -157,7 +159,7 @@ module.exports = (RED) => {
         html +="</style>";
         html += String.raw`
 <style>
-.ui-spinner-overlay {
+.ui-spinner-overlay-${id} {
     position: absolute;
     background: rgba(0, 0, 0, 0.25);
     width: 100%;
@@ -165,7 +167,7 @@ module.exports = (RED) => {
     z-index: 999995;
 }
 
-.ui-spinner-container {
+.ui-spinner-container-${id} {
     position: absolute;
     top: calc(50% - ${size/2}px);
     left: calc(50% - ${size/2}px);
@@ -182,29 +184,29 @@ module.exports = (RED) => {
 function init(scope) {
     const gid = "global-spinner-${id}";
     const gcontainer = $("#" +gid);
-    const id = ${overlay} ? gid : "spinner-${id}";
-    let container = ${overlay} ? gcontainer : $("#"+id);
+    const eid = ${overlay} ? gid : "spinner-${id}";
+    let container = ${overlay} ? gcontainer : $("#"+eid);
 
     if (${overlay}) {
         if (gcontainer.length === 0) {
-            container = $("<div id='"+gid+"' class='ui-spinner-overlay'/>").appendTo(document.body);
+            container = $("<div id='"+gid+"' class='ui-spinner-overlay-${id}'/>").appendTo(document.body);
         }
     }
     gcontainer.empty();
     container.empty();
 
-    $("<div class='ui-spinner-container'>${snippet}</div>").appendTo(container);
+    $("<div class='ui-spinner-container-${id}'>${snippet}</div>").appendTo(container);
 
-    $("#"+id).hide();
+    $("#"+eid).hide();
 
     scope.$watch("msg", (msg) => {
         if (msg) {
             const command = msg.payload;
             if (command) {
-                $("#"+id).show();
+                $("#"+eid).show();
             }
             else {
-                $("#"+id).hide();
+                $("#"+eid).hide();
             }
         }
     });
@@ -237,12 +239,14 @@ init(scope);
 
             if (checkConfig(node, config)) {
                 var html = HTML(config);
+                const width = (config.overlay ? -1 : config.width);
+                const height = (config.overlay ? -1 : config.height);
                 var done = ui.addWidget({
                     node: node,
                     order: config.order,
                     group: config.group,
-                    width: config.width,
-                    height: config.height,
+                    width: width,
+                    height: height,
                     format: html,
                     templateScope: "local",
                     emitOnlyNewValues: false,

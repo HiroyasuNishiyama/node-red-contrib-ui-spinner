@@ -1,0 +1,573 @@
+[
+    {
+        "id": "4d91bc5cfd96d00d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "09a2088e02d632af",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 5,
+        "width": "3",
+        "height": "3",
+        "name": "Plane",
+        "kind": "plane",
+        "overlay": false,
+        "color": "#40b563",
+        "spinSize": "60",
+        "x": 230,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "0a0f8b5b08e9e83a",
+        "type": "ui_button",
+        "z": "4d91bc5cfd96d00d",
+        "name": "",
+        "group": "b43d78feac3a92b9",
+        "order": 1,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "SHOW",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "2c51015c23c57862"
+            ]
+        ]
+    },
+    {
+        "id": "b9993cb3d7767727",
+        "type": "ui_button",
+        "z": "4d91bc5cfd96d00d",
+        "name": "",
+        "group": "b43d78feac3a92b9",
+        "order": 3,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "HIDE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "1070e946ab82473a"
+            ]
+        ]
+    },
+    {
+        "id": "2c51015c23c57862",
+        "type": "link out",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "61c00532180b588c",
+            "cabd8cc32be92985",
+            "60715f3a9330477a",
+            "77a3627e0ecc46a2",
+            "8e79c975ced4c3c7",
+            "dbe45cf87e019b2d",
+            "f5a35c62c6f9629d",
+            "4bc10bef9b6bc7bb",
+            "0405cf2f8d6458ba",
+            "01bc24837cb11f11",
+            "7162ab0c1d70f272",
+            "8c59504301cb8f8d"
+        ],
+        "x": 265,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1070e946ab82473a",
+        "type": "link out",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "61c00532180b588c",
+            "cabd8cc32be92985",
+            "60715f3a9330477a",
+            "77a3627e0ecc46a2",
+            "8e79c975ced4c3c7",
+            "dbe45cf87e019b2d",
+            "f5a35c62c6f9629d",
+            "4bc10bef9b6bc7bb",
+            "0405cf2f8d6458ba",
+            "01bc24837cb11f11",
+            "7162ab0c1d70f272",
+            "8c59504301cb8f8d",
+            "ec8b60e5eb792eb5"
+        ],
+        "x": 465,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "61c00532180b588c",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 1",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862"
+        ],
+        "x": 135,
+        "y": 200,
+        "wires": [
+            [
+                "09a2088e02d632af"
+            ]
+        ]
+    },
+    {
+        "id": "f4369c8f9480d076",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 6,
+        "width": "3",
+        "height": "3",
+        "name": "Chase",
+        "kind": "chase",
+        "overlay": false,
+        "color": "#b5408a",
+        "spinSize": "60",
+        "x": 450,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "cabd8cc32be92985",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 2",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 355,
+        "y": 200,
+        "wires": [
+            [
+                "f4369c8f9480d076"
+            ]
+        ]
+    },
+    {
+        "id": "3119da65fe4abf8b",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 7,
+        "width": "3",
+        "height": "3",
+        "name": "Bounce",
+        "kind": "bounce",
+        "overlay": false,
+        "color": "#5940b5",
+        "spinSize": "60",
+        "x": 240,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "60715f3a9330477a",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 3",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 135,
+        "y": 260,
+        "wires": [
+            [
+                "3119da65fe4abf8b"
+            ]
+        ]
+    },
+    {
+        "id": "8b1ecc6d3747ea76",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 8,
+        "width": "3",
+        "height": "3",
+        "name": "Wave",
+        "kind": "wave",
+        "overlay": false,
+        "color": "#40b5a7",
+        "spinSize": "60",
+        "x": 450,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "77a3627e0ecc46a2",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 4",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 355,
+        "y": 260,
+        "wires": [
+            [
+                "8b1ecc6d3747ea76"
+            ]
+        ]
+    },
+    {
+        "id": "6bcfdd979ecc67be",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 9,
+        "width": "3",
+        "height": "3",
+        "name": "Pulse",
+        "kind": "pulse",
+        "overlay": false,
+        "color": "#ff7300",
+        "spinSize": "60",
+        "x": 230,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "8e79c975ced4c3c7",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 5",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 135,
+        "y": 320,
+        "wires": [
+            [
+                "6bcfdd979ecc67be"
+            ]
+        ]
+    },
+    {
+        "id": "7391479d7385cce6",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 10,
+        "width": "3",
+        "height": "3",
+        "name": "Flow",
+        "kind": "flow",
+        "overlay": false,
+        "color": "#060eea",
+        "spinSize": "60",
+        "x": 450,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "dbe45cf87e019b2d",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 6",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 355,
+        "y": 320,
+        "wires": [
+            [
+                "7391479d7385cce6"
+            ]
+        ]
+    },
+    {
+        "id": "9db5fef9765ea54b",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 11,
+        "width": "3",
+        "height": "3",
+        "name": "Swing",
+        "kind": "swing",
+        "overlay": false,
+        "color": "#b7fa00",
+        "spinSize": "60",
+        "x": 230,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "f5a35c62c6f9629d",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 7",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 135,
+        "y": 380,
+        "wires": [
+            [
+                "9db5fef9765ea54b"
+            ]
+        ]
+    },
+    {
+        "id": "9b1b5c2829f7df5d",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 12,
+        "width": "3",
+        "height": "3",
+        "name": "Circle",
+        "kind": "circle",
+        "overlay": false,
+        "color": "#5f0202",
+        "spinSize": "60",
+        "x": 450,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "4bc10bef9b6bc7bb",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 8",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 355,
+        "y": 380,
+        "wires": [
+            [
+                "9b1b5c2829f7df5d"
+            ]
+        ]
+    },
+    {
+        "id": "f6d5d75e9daa45c9",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 13,
+        "width": "3",
+        "height": "3",
+        "name": "Circle Fade",
+        "kind": "circle-fade",
+        "overlay": false,
+        "color": "#002418",
+        "spinSize": "60",
+        "x": 250,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "0405cf2f8d6458ba",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 9",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 135,
+        "y": 440,
+        "wires": [
+            [
+                "f6d5d75e9daa45c9"
+            ]
+        ]
+    },
+    {
+        "id": "b0f64c846b01d46e",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 14,
+        "width": "3",
+        "height": "3",
+        "name": "Grid",
+        "kind": "grid",
+        "overlay": false,
+        "color": "#77d4a4",
+        "spinSize": "60",
+        "x": 450,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "01bc24837cb11f11",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 10",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 355,
+        "y": 440,
+        "wires": [
+            [
+                "b0f64c846b01d46e"
+            ]
+        ]
+    },
+    {
+        "id": "009b493d2a0a2535",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 15,
+        "width": "3",
+        "height": "3",
+        "name": "Fold",
+        "kind": "fold",
+        "overlay": false,
+        "color": "#ffc800",
+        "spinSize": "60",
+        "x": 230,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "7162ab0c1d70f272",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 11",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 135,
+        "y": 500,
+        "wires": [
+            [
+                "009b493d2a0a2535"
+            ]
+        ]
+    },
+    {
+        "id": "586c08dd2fc5ce57",
+        "type": "ui_spinner",
+        "z": "4d91bc5cfd96d00d",
+        "group": "b43d78feac3a92b9",
+        "order": 16,
+        "width": "3",
+        "height": "3",
+        "name": "Wander",
+        "kind": "wander",
+        "overlay": false,
+        "color": "#440ae6",
+        "spinSize": "60",
+        "x": 460,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "8c59504301cb8f8d",
+        "type": "link in",
+        "z": "4d91bc5cfd96d00d",
+        "name": "link in 12",
+        "links": [
+            "1070e946ab82473a",
+            "2c51015c23c57862",
+            "1074bc0c93878464"
+        ],
+        "x": 355,
+        "y": 500,
+        "wires": [
+            [
+                "586c08dd2fc5ce57"
+            ]
+        ]
+    },
+    {
+        "id": "bcc7f445ee90e437",
+        "type": "comment",
+        "z": "4d91bc5cfd96d00d",
+        "name": "Show various spinners.",
+        "info": "",
+        "x": 180,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "c99c770a8555bbf8",
+        "type": "ui_spacer",
+        "z": "4d91bc5cfd96d00d",
+        "name": "spacer",
+        "group": "b43d78feac3a92b9",
+        "order": 4,
+        "width": "8",
+        "height": "1"
+    },
+    {
+        "id": "b43d78feac3a92b9",
+        "type": "ui_group",
+        "name": "Group",
+        "tab": "1cdaec3ca7e91bb1",
+        "order": 1,
+        "disp": false,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1cdaec3ca7e91bb1",
+        "type": "ui_tab",
+        "name": "demo1",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

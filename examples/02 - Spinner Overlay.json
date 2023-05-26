@@ -1,0 +1,130 @@
+[
+    {
+        "id": "bf1e22c988899251",
+        "type": "ui_spinner",
+        "z": "5db0b08822f8aac5",
+        "group": "f4bcfd51d1cb6aa6",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "name": "Chase",
+        "kind": "circle-fade",
+        "overlay": true,
+        "color": "#24f061",
+        "spinSize": "140",
+        "x": 610,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "e3f096f3cdb9df2a",
+        "type": "ui_button",
+        "z": "5db0b08822f8aac5",
+        "name": "",
+        "group": "f4bcfd51d1cb6aa6",
+        "order": 1,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "START",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 130,
+        "y": 180,
+        "wires": [
+            [
+                "8aa81799dff945c7",
+                "bf1e22c988899251"
+            ]
+        ]
+    },
+    {
+        "id": "8aa81799dff945c7",
+        "type": "delay",
+        "z": "5db0b08822f8aac5",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 300,
+        "y": 120,
+        "wires": [
+            [
+                "308d04894b909929"
+            ]
+        ]
+    },
+    {
+        "id": "308d04894b909929",
+        "type": "change",
+        "z": "5db0b08822f8aac5",
+        "name": "payload←false",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 120,
+        "wires": [
+            [
+                "bf1e22c988899251"
+            ]
+        ]
+    },
+    {
+        "id": "a6c704848015aac9",
+        "type": "comment",
+        "z": "5db0b08822f8aac5",
+        "name": "Show spinner overlay then hide it after 10s.",
+        "info": "",
+        "x": 220,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "f4bcfd51d1cb6aa6",
+        "type": "ui_group",
+        "name": "Group",
+        "tab": "2ce0dab96b9a3aa0",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2ce0dab96b9a3aa0",
+        "type": "ui_tab",
+        "name": "demo2",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

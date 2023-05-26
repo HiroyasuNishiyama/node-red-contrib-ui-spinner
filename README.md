@@ -15,7 +15,12 @@ Node-RED-dashboard v2.13.0 or greater
 
 ## Usage
 
+`ui_spinner` widget displays an animated indicator on the Node-RED
+dashboard.  It uses [SpinKit](https://github.com/tobiasahlin/SpinKit)
+to display spinners and supports various spinner types.
 
+![Spinner Demo 1](figs/demo1.gif)
+![Spinner Demo 2](figs/demo2.gif)
 
 ## Example
 

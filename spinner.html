@@ -100,13 +100,13 @@
         align: "right",
         icon: "font-awesome/fa-spinner",
         paletteLabel: "spinner",
-        label: () => {
+        label: function() {
             return this.name || "spinner";
         },
-        labelStyle: () => {
+        labelStyle: function() {
             return this.name ? "node_label_italic" : "";
         },
-        oneditprepare: () => {
+        oneditprepare: function() {
             const node = this;
             $("#node-input-size").elementSizer({
                 width: "#node-input-width",
@@ -137,11 +137,7 @@
             });
             $("#node-input-overlay").change();
         },
-        oneditsave: () => {
-            if ($("#node-input-overlay").prop("checked")) {
-                $("#node-input-width").val(-1);
-                $("#node-input-height").val(-1);
-            }
+        oneditsave: function() {
         },
     });
 </script>
