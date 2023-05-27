@@ -153,9 +153,11 @@ module.exports = (RED) => {
         const color = config.color;
         const size = config.spinSize;
         const snippet = snippetFor(kind, size).replace(/\r?\n/g, "");
+        const path = require.resolve("spinkit/spinkit.min.css");
+        const data = fs.readFileSync(path);
         let html = "";
         html +="<style>";
-        html += fs.readFileSync(path.join(__dirname, "node_modules", "spinkit/spinkit.min.css"));
+        html += data;
         html +="</style>";
         html += String.raw`
 <style>
